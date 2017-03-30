@@ -1,0 +1,24 @@
+{
+  "name": "robinson-app",
+  "description": "",
+  "main": "",
+  "authors": [
+    "= <=>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "AdminLTE": "adminlte#~2.3.11",
+    "jquery": "~3.2.0",
+    "bootstrap": "~3.3.7"
+  }
+}
