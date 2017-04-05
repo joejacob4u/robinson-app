@@ -12,8 +12,22 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
+
+
+Route::resource('books ', 'BooksController');
+Route::resource('document ', 'DocumentController');
+
 
 Route::post('audio/record','AudioController@save');
 Route::post('audio/process','AudioController@processSpeech');
+
+//Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
+Route::get('/clear', function() {
+    
+    $exitCode = Artisan::call('config:cache');
+});

@@ -23,9 +23,33 @@
   <!-- /.search form -->
   <!-- sidebar menu: : style can be found in sidebar.less -->
   <ul class="sidebar-menu">
-    <li><a href="{{url('read')}}"><i class="fa fa-hospital-o" aria-hidden="true"></i> <span>Read</span></a></li>
+     
 
     <li class="header text-yellow"><strong>ADMIN</strong></li>
+
+     <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Inventory</span>
+            <span class="pull-right-container">
+              <span class="label label-primary pull-right"></span>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o"></i>Books</a></li>
+            <li><a href="/admin/document"><i class="fa fa-circle-o"></i>Documents</a></li>
+          
+          </ul>
+      </li> 
+      <li>
+              <a href="{{ route('logout') }}"  onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                <i class="fa fa-sign-out"></i> <span>Logout</span>
+              </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                </form>
+      </li> 
   </ul>
 </section>
 </aside>

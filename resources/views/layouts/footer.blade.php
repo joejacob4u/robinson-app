@@ -11,3 +11,14 @@
 <script src="{{ asset ("/bower_components/AdminLTE/dist/js/app.min.js") }}" type="text/javascript"></script>
 <script src="{{ asset ("/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js") }}" type="text/javascript"></script>
 <script src="{{ asset ("/bower_components/bootbox.js/bootbox.js") }}" type="text/javascript"></script>
+<!-- bootstrap datepicker -->
+<script src="{{ asset ("/bower_components/AdminLTE/plugins/datepicker/bootstrap-datepicker.js") }}"></script>
+<!-- DataTables -->
+<script src="{{ asset ("/bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js") }}"></script>
+<script src="{{ asset ("/bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js") }}"></script>
+<script>
+	$(".techpopupalert").fadeTo(2000, 500).slideUp(500, function(){
+    $(".techpopupalert").slideUp(500);
+});
+</script>
+@yield('script_code')
