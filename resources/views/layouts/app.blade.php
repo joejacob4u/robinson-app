@@ -16,30 +16,21 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        {{$page_title or ''}}
-        <small>{{$page_description or ''}}</small>
+        @yield('header')
+        <small>@yield('description')</small>
       </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+        <li class="active">Here</li>
+      </ol>
     </section>
-
     <!-- Main content -->
     <section class="content">
-    @if(Session::has('flash_message'))
-                        <div class="alert alert-success alert-dismissible techpopupalert">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <h4>    <i class="icon fa fa-check"></i> Alert!</h4>
-                                {{Session::get('flash_message')}}
-                        </div>
-                    @elseif(Session::has('flash_error_message'))
-                        <div class="alert alert-danger alert-dismissible techpopupalert">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <h4><i class="icon fa fa-ban"></i> Alert!</h4>
-                                {{Session::get('flash_error_message')}}
-                        </div>
-                    @endif
-      @yield('content')
+     @yield('content')
     </section>
-        <!-- right col -->
-      </div>
+    <!-- /.content -->
+  </div>
+
       <!-- /.row (main row) -->
     <!-- /.content -->
   <!-- /.content-wrapper -->

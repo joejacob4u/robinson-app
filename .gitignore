@@ -3,6 +3,7 @@
 /public/hot
 /public/audio-uploads
 /public/bower_components
+/public/files
 /storage/*.key
 /vendor
 /.idea
