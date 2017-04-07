@@ -20,8 +20,7 @@
         <small>@yield('description')</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i>Documents</a></li>
-        <li class="active">Here</li>
+         {!! Breadcrumbs::render() !!}
       </ol>
     </section>
     <!-- Main content -->

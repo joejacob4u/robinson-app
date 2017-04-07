@@ -46,7 +46,7 @@ class PagesController extends Controller
     public function store(Request $request)
     {
                
-             
+             try{
                 $this->validate($request, [
                 'doc_page_no' => 'required',
                 'doc_page_content' => 'required',
@@ -77,6 +77,11 @@ class PagesController extends Controller
              {
                 return redirect('admin/documents/'. $request->id.'/pages')->with('errors','Page Insertion Failed');
              }
+
+         }catch(\Exception $e){
+ 
+  
+      }
     }
 
     /**
@@ -118,11 +123,15 @@ class PagesController extends Controller
      */
     public function update($did,$id,Request $request)
     {
+
+
+        try{
          $this->validate($request, [
                 'doc_page_no' => 'required',
                 'doc_page_content' => 'required',
                
                 ]);
+        
        
 
        //return $request->input();
@@ -147,6 +156,10 @@ class PagesController extends Controller
              {
                 return redirect('admin/documents/'. $did.'/pages')->with('errors','Page Updation Failed');
              }
+
+          }catch(\Exception $e){
+  
+      }
     }
 
     /**
@@ -157,7 +170,7 @@ class PagesController extends Controller
      */
     public function destroy($did,$id)
     {
-       
+        try{
          $result=DocumentPages::where('id',$id)->delete();
 
              if($result)
@@ -169,5 +182,9 @@ class PagesController extends Controller
                 return redirect('admin/documents/'. $did.'/pages')->with('errors','Page Deletion Failed');
              
              }
+        }catch(\Exception $e){
+ 
+            
+      }
     }
 }

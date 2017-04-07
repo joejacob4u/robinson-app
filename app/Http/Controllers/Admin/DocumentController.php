@@ -54,6 +54,7 @@ class DocumentController extends Controller
     public function store(Request $request)
     {
 
+        try{
 
          $this->validate($request, [
                 'doc_name' => 'required|unique:tbl_document',
@@ -97,6 +98,12 @@ class DocumentController extends Controller
              {
                 return redirect('admin/documents')->with('errors','Document Insertion Failed');
              }
+
+
+        }catch(\Exception $e){
+ 
+          
+      }
     
       
     }
@@ -139,7 +146,7 @@ class DocumentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+    try{
         $document = new Document;
 
         $this->validate($request, [
@@ -188,6 +195,11 @@ class DocumentController extends Controller
                 return redirect('admin/documents')->with('errors','Document Updation Failed');
 
              }
+
+     }catch(\Exception $e){
+ 
+            
+    }
       
 
        
@@ -201,7 +213,7 @@ class DocumentController extends Controller
      */
     public function destroy($id)
     {
-        
+     try{
          $image=Document::select('doc_cover')->where('id',$id)->first()->doc_cover;
          $result=Document::where('id',$id)->delete();
 
@@ -212,9 +224,14 @@ class DocumentController extends Controller
 
                 return redirect('admin/documents')->with('success','Document Deleted Successfully');
              }
-             else
+             else 
              {
                  return redirect('admin/documents')->with('errors','Document Deletion Failed');
              }
+
+        }catch(\Exception $e){
+ 
+            return redirect('admin/documents')->with('errors','Document Deletion Failed,Delete all sub Pages before deleting this Document ');
+      }
     }
 }
