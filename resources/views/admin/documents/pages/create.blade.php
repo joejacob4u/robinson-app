@@ -13,7 +13,7 @@
    
     </ul>
   </div>
-  @endif
+   
   {!!Form::open(['route' => ['pages.store',$id]]) !!}
   <input name="_token" type="hidden" value="{!! csrf_token() !!}" />
   <input name="id" type="hidden" value="{{$id}}" />
