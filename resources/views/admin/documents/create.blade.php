@@ -1,18 +1,12 @@
 @extends('layouts.app')
- @section('content')   
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-           <h1>
-            Add Document
-           
-          </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">User</li>
-          </ol>
-        </section>
+@section('header','Add Document')
+@section('description','')
+@section('content')
+@include('layouts.partials.success')
+@include('layouts.partials.errors')
 
         <!-- Main content -->
+<!-- Main content -->
         <section class="content">
          <div class="box box-default">
          @if (count($errors) > 0)
@@ -26,7 +20,7 @@
 @endif
 
           
-           {!!Form::open( ['route' => 'document.store','files' => true]) !!}
+           {!!Form::open( ['route' => 'documents.store','files' => true]) !!}
           
             <input name="_token" type="hidden" value="{!! csrf_token() !!}" />
             
@@ -37,7 +31,7 @@
             <div class="box-body">
               <div class="row">
                 <div class="col-md-4">
-                  	
+                    
                   <div class="form-group">
                       <label for="1">Name</label>
                     {!!Form::text('doc_name', '', ['class' => 'form-control','placeholder' => 'Name'])!!}
@@ -51,9 +45,7 @@
                   {!!Form::text('publish_date', '', ['id'=>'publish_date','class' => 'form-control pull-right','placeholder' => 'Publish Date'])!!}
                     </div>
                   </div>    
-                  
                 
-                  
                     
                   
                 </div><!-- /.col -->
@@ -81,12 +73,13 @@
                  
                   </div>
                 </div><!-- /.col -->
-              </div><!-- /.row -->
-              <div class="col-md-4">
+                 <div class="col-md-4">
                   <div class="form-group">
                     <input class="btn btn-success" type="submit" id="submit" />
                   </div>
               </div>
+              </div><!-- /.row -->
+              
             </div><!-- /.box-body -->
           </form>
           

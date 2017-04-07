@@ -9,15 +9,15 @@
 <section class="content">
   <div class="box">
     <div class="box-header with-border">
-        <h3 class="box-title">Document</h3>
+        <h3 class="box-title">Documents</h3>
 
         <div class="box-tools pull-right">
-          <a href="{{url('admin/document/create')}}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add Document</a>
+          <a href="{{url('admin/documents/create')}}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add Document</a>
         </div>
       </div>
           <div class="box-body">
             <table id="tabledocument" class="table table-bordered table-striped">
-                      <thead>
+                      <thead> 
                         <tr>
                           <th>Sl.no</th>
                           <th>Name</th>
@@ -36,12 +36,20 @@
                                 <td>{{$sl++}}</td>
                                 <td>{{$data->doc_name}}</td>
                                 <td>{{$data->doc_author}}</td>
-                                <td>{{$data->category->cat_name}}</td>
-                               <td><input type="button" onclick="window.location.href='pages/list/{{$data->id}}'" id="position_delete" name="position_delete" class="btn btn-primary" value="Pages" /></td>
-                                <td>{{$data->publish_date}}</td>
+                                <td>{{$data->category->cat_name}}</td> 
 
-                                <td><input type="button" onclick="window.location.href='{{ URL::route('document.edit',$data->id) }}'" id="position_edit" name="position_edit" class="btn btn-primary" value="Edit" /></td>
-                                <td><input type="button" onclick="window.location.href='document/delete/{{$data->id}}'" id="position_delete" name="position_delete" class="btn btn-danger" value="Delete" /></td>
+                                <td><a href="{{URL::route('pages.index',$data->id) }}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-file"></span></a> </td> 
+                               
+                                <td>{{$data->publish_date}}</td>
+                                <td><a href="{{URL::route('documents.edit',$data->id) }}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a> </td>
+
+                                <td>
+                                {{ Form::open([ 'method'  => 'delete', 'route' => [ 'documents.destroy', $data->id ]])}}
+                                {{ Form::button(' <span class="glyphicon glyphicon-remove"></span>', ['type'=>'submit','class' => 'btn  btn-danger btn-primary btn-xs  ']) }} 
+                                {{ Form::close() }}
+                                </td>
+
+
                               </tr>
 
                             @endforeach

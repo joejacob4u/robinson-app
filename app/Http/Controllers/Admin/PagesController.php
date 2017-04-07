@@ -17,13 +17,10 @@ class PagesController extends Controller
     public function index($id)
     {
 
-      //  return DocumentPages::all()->document->doc_name;
                 
         $data=DocumentPages::where('doc_id',$id)->get();
 
-
-
-        return view('admin.pages',compact('data','id'));
+        return view('admin.documents.pages.index',compact('data','id'));
 
     }
 
@@ -31,13 +28,12 @@ class PagesController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function create($id)
     {
                
 
-        
-        return view('admin.add_pages',compact('id'));
+        return view('admin.documents.pages.create',compact('id')); 
 
     }
 
@@ -64,9 +60,7 @@ class PagesController extends Controller
                     'doc_page_no'  =>$request->doc_page_no,
                     'doc_page_content'  =>$request->doc_page_content,
                     'doc_id'  =>$request->id,
-                    'tags'  =>$request->tags,
-                    
-                   
+                    'tags'  =>$request->tags,               
                   );  
 
         
@@ -76,15 +70,12 @@ class PagesController extends Controller
 
         if($result)
              {
-                \Session::flash('flash_message', 'Document Successfully Updated.');
-                //return \Redirect::route('pages.index');
-                 return redirect('admin/pages/list/'.$request->id);
+
+                return redirect('admin/documents/'. $request->id.'/pages')->with('success','New Page has been added');
              }
              else
              {
-                 \Session::flash('flash_error_message', 'Document Updation Failed.');
-              
-                return redirect('admin/pages/list/'.$request->id);
+                return redirect('admin/documents/'. $request->id.'/pages')->with('errors','Page Insertion Failed');
              }
     }
 
@@ -94,12 +85,12 @@ class PagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($did,$id)
     {
         
         $data=DocumentPages::where('id',$id)->first(); 
 
-        return view('admin.view_pages',compact('data'));
+        return view('admin.documents.pages.show',compact('data'));
 
     }
 
@@ -109,12 +100,13 @@ class PagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($did,$id)
     {
         
+     
         $data=DocumentPages::where('id',$id)->first(); 
 
-        return view('admin.edit_pages',compact('data','id'));
+        return view('admin.documents.pages.edit',compact('data','id'));
     }
 
     /**
@@ -124,7 +116,7 @@ class PagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update($did,$id,Request $request)
     {
          $this->validate($request, [
                 'doc_page_no' => 'required',
@@ -133,11 +125,12 @@ class PagesController extends Controller
                 ]);
        
 
-       
+       //return $request->input();
 
         $data=array(
                     'doc_page_no'  =>$request->doc_page_no,
                     'doc_page_content'  =>$request->doc_page_content,
+                    'tags'  =>$request->tags,
                    
                   );  
 
@@ -148,13 +141,11 @@ class PagesController extends Controller
 
              if($result)
              {
-                \Session::flash('flash_message', 'Page Successfully Updated.');
-                return redirect('/admin/pages/list/'.$request->id);
+                return redirect('admin/documents/'. $did.'/pages')->with('success','Page Updated Successfully');
              }
              else
              {
-                 \Session::flash('flash_error_message', 'Page Updation Failed.');
-                return redirect('/admin/pages/list/'.$request->id);
+                return redirect('admin/documents/'. $did.'/pages')->with('errors','Page Updation Failed');
              }
     }
 
@@ -171,13 +162,12 @@ class PagesController extends Controller
 
              if($result)
              { 
-                \Session::flash('flash_message', 'Page Deleted Successfully.');
-                return redirect('/admin/pages/list/'.$did);
+                return redirect('admin/documents/'. $did.'/pages')->with('success','Page Deleted Successfully');
              }
              else
              {
-                 \Session::flash('flash_error_message', 'Page Deletion failed.');
-                return redirect('/admin/pages/list/'.$did);
+                return redirect('admin/documents/'. $did.'/pages')->with('errors','Page Deletion Failed');
+             
              }
     }
 }

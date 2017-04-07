@@ -21,7 +21,7 @@ class DocumentController extends Controller
 
        $data=Document::all();
 
-       return view('admin.document',compact('data'));
+       return view('admin.documents.index',compact('data'));
 
     }
 
@@ -32,13 +32,13 @@ class DocumentController extends Controller
      */
     public function create()
     {
-        //
+        
 
        
         $categories =Category::pluck('cat_name', 'id');
 
 
-        return view('admin.add_document',compact('categories'));
+        return view('admin.documents.create',compact('categories'));
 
 
 
@@ -56,15 +56,14 @@ class DocumentController extends Controller
 
 
          $this->validate($request, [
-                'doc_name' => 'required',
+                'doc_name' => 'required|unique:tbl_document',
                 'doc_author' => 'required',
                 'publish_date' => 'required',
                 'category' => 'required',
                 ]);
 
          $date = date('Y-m-d', strtotime($request->publish_date));
-         //date('d F Y', strtotime($post->tanggal)
-
+       
 
 
         if($request->doc_cover)
@@ -92,13 +91,11 @@ class DocumentController extends Controller
 
         if($result)
              {
-                \Session::flash('flash_message', 'Document Successfully Updated.');
-                return \Redirect::route('document.index');
+                return redirect('admin/documents')->with('success','New Document has been added');
              }
              else
              {
-                 \Session::flash('flash_error_message', 'Document Updation Failed.');
-                return \Redirect::route('document.index');
+                return redirect('admin/documents')->with('errors','Document Insertion Failed');
              }
     
       
@@ -130,7 +127,7 @@ class DocumentController extends Controller
         $data=Document::where('id',$id)->first(); 
         $categories =Category::pluck('cat_name', 'id');
 
-        return view('admin.edit_document',compact('data','categories'));
+        return view('admin.documents.edit',compact('data','categories'));
     }
 
     /**
@@ -183,13 +180,13 @@ class DocumentController extends Controller
 
              if($result)
              {
-                \Session::flash('flash_message', 'Document Successfully Updated.');
-                return \Redirect::route('document.index');
+                return redirect('admin/documents')->with('success','Document Successfully Updated');
              }
              else
              {
-                 \Session::flash('flash_error_message', 'Document Updation Failed.');
-                return \Redirect::route('document.index');
+
+                return redirect('admin/documents')->with('errors','Document Updation Failed');
+
              }
       
 
@@ -213,13 +210,11 @@ class DocumentController extends Controller
                
                 File::delete('/files/documents/cover/'.$image); 
 
-                \Session::flash('flash_message', 'Document Deleted Successfully.');
-                return \Redirect::route('document.index');
+                return redirect('admin/documents')->with('success','Document Deleted Successfully');
              }
              else
              {
-                 \Session::flash('flash_error_message', 'Document Deletion failed.');
-                return \Redirect::route('document.index');
+                 return redirect('admin/documents')->with('errors','Document Deletion Failed');
              }
     }
 }

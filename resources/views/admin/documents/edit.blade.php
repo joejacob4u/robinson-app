@@ -1,43 +1,29 @@
 @extends('layouts.app')
- @section('content')   
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-           <h1>
-            Edit Document
-           
-          </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">User</li>
-          </ol>
-        </section>
+@section('header','Edit Document')
+@section('description','')
+@section('content')
+@include('layouts.partials.success')
+@include('layouts.partials.errors')
 
         <!-- Main content -->
+ <!-- Main content -->
         <section class="content">
          <div class="box box-default">
-         @if (count($errors) > 0)
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
+         
+  
           
-           {!!Form::model($data,['route' =>['document.update',$data->id],'files' =>true])!!}
+           {!!Form::model($data,['route' =>['documents.update',$data->id],'files' =>true])!!}
            {{ method_field('PUT') }} 
           
             <input name="_token" type="hidden" value="{!! csrf_token() !!}" />
             <div class="box-header with-border">
-              <h3 class="box-title">Document Details</h3>
+              <h3 class="box-title">Document:{{$data->doc_name}}</h3>
               
             </div><!-- /.box-header -->
             <div class="box-body">
               <div class="row">
                 <div class="col-md-4">
-                  	
+                    
                   <div class="form-group">
                       <label for="1">Name</label>
                     {!!Form::text('doc_name', null, ['class' => 'form-control','placeholder' => 'Name'])!!}
@@ -80,7 +66,7 @@
                    <div class="col-md-4">
                   <div class="form-group">
 
-                 <img class="img-responsive" src="/files/documents/cover/{{$data->doc_cover}}" alt="Photo">
+                 <img  src="/files/documents/cover/{{$data->doc_cover}}" height="250 "  alt="Photo">
 
                  </div> 
                   </div>

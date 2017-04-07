@@ -37,7 +37,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="#"><i class="fa fa-circle-o"></i>Books</a></li>
-            <li><a href="/admin/document"><i class="fa fa-circle-o"></i>Documents</a></li>
+            <li><a href="/admin/documents"><i class="fa fa-circle-o"></i>Documents</a></li>
           
           </ul>
       </li> 

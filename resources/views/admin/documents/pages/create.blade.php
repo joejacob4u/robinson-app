@@ -1,38 +1,20 @@
 @extends('layouts.app')
-@section('head')
-<!-- bootstrap wysihtml5 - text editor -->
+@section('header','Add Page')
+@section('description','')
+@section('content')
+@include('layouts.partials.success')
+@include('layouts.partials.errors')
+
+ <!-- bootstrap wysihtml5 - text editor -->
 <link rel="stylesheet" href="/bower_components/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
-@endsection
-@section('content')   
-<!-- Content Header (Page header) -->
-<section class="content-header">
- <h1>
-  Add Page
-
-</h1>
-<ol class="breadcrumb">
-  <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-  <li class="active">User</li>
-</ol>
-</section>
-
 <!-- Main content -->
 <section class="content">
  <div class="box box-default">
-   @if (count($errors) > 0)
-   <div class="alert alert-danger">
-    <ul>
-      @foreach ($errors->all() as $error)
-      <li>{{ $error }}</li>
-      @endforeach
+   
     </ul>
   </div>
   @endif
-
-
-  {!!Form::open( ['route' => 'pages.store','files' => true]) !!}
-
+  {!!Form::open(['route' => ['pages.store',$id]]) !!}
   <input name="_token" type="hidden" value="{!! csrf_token() !!}" />
   <input name="id" type="hidden" value="{{$id}}" />
   <div class="box-header with-border">
@@ -42,7 +24,7 @@
   <div class="box-body">
     <div class="row">
       <div class="col-md-4">
-
+ 
         <div class="form-group">
           <label for="1">Page Number</label>
           {!!Form::number('doc_page_no', '', ['class' => 'form-control','placeholder' => 'Page Number'])!!}
