@@ -61,7 +61,7 @@
                       <label for="1">Category</label>
 
                   
-                    {!!Form::select('category',$categories,null,['class' => 'form-control'])!!}
+                    {!!Form::select('category',$categories,$data->cat_id,['class' => 'form-control'])!!}
                   </div> 
                    <div class="col-md-4">
                   <div class="form-group">

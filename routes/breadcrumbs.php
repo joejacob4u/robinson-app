@@ -7,6 +7,11 @@ $doc=new Document;
 $page=new DocumentPages;
 
 
+Breadcrumbs::register('admin', function($breadcrumbs)
+{
+    $breadcrumbs->push('Admin', route('admin'));
+});
+
  Breadcrumbs::register('documents.index', function($breadcrumbs)
 {
     $breadcrumbs->push('Documents', route('documents.index'));
