@@ -9,7 +9,7 @@
 
         <!-- Main content -->
 <section class="content">
- <div class="box box-default">
+<div class="box box-default">
     
 
 
@@ -20,7 +20,9 @@
   {{-- <input name="id" type="hidden" value="{{$id}}" /> --}}
   <div class="box-header with-border">
     <h3 class="box-title">Document:{{$data->document->doc_name }}<br>Page Number:{{$data->doc_page_no }}</h3>
-
+<div style="margin-right: 5px;" class="pull-right">
+            <a href="{{url()->previous()}}" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
+            </div>
   </div><!-- /.box-header -->
   <div class="box-body">
     <div class="row">

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+   // protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -47,11 +47,15 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+       $messages = [
+    'emailid.required' => 'The :attribute field is required.',
+];
+
         return Validator::make($data, [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'emailid' => 'required|email|max:255|unique:users,email',
             'password' => 'required|min:6|confirmed',
-        ]);
+        ],$messages);
     }
 
     /**
@@ -64,8 +68,23 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-            'email' => $data['email'],
+            'email' => $data['emailid'],
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    protected function authenticated($request, $user)
+    {
+        if($user->type==="Admin") {
+            return redirect()->intended('/admin');
+        }
+        return redirect()->intended('/');
+    }
+
+    public function messages()
+    {
+    return [
+        'emailid.required' => 'The email has already been taken.',];
+        
+}
 }

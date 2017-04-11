@@ -54,6 +54,7 @@ class DocumentController extends Controller
     public function store(Request $request)
     {
 
+       
         try{
 
          $this->validate($request, [
@@ -101,7 +102,7 @@ class DocumentController extends Controller
 
 
         }catch(\Exception $e){
- 
+        return $e;
           
       }
     

@@ -11,9 +11,12 @@
     <div class="box-header with-border">
         <h3 class="box-title">Document</h3>
 
-        <div class="box-tools pull-right">
+        <div class="pull-right">
           <a href="{{ URL::route('pages.create',$id)}}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add Page</a>
         </div>
+        <div style="margin-right: 5px;" class="pull-right">
+            <a href="{{url()->previous()}}" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
+            </div>
       </div>
           <div class="box-body">
             <table id="tabledocument" class="table table-bordered table-striped">

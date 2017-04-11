@@ -11,14 +11,16 @@
 <section class="content">
  <div class="box box-default">
    
-    </ul>
-  </div>
+
    
   {!!Form::open(['route' => ['pages.store',$id]]) !!}
   <input name="_token" type="hidden" value="{!! csrf_token() !!}" />
   <input name="id" type="hidden" value="{{$id}}" />
   <div class="box-header with-border">
     <h3 class="box-title">Document Details</h3>
+    <div style="margin-right: 5px;" class="pull-right">
+            <a href="{{url()->previous()}}" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
+            </div>
 
   </div><!-- /.box-header -->
   <div class="box-body">

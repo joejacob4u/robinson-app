@@ -42,6 +42,6 @@ class LoginController extends Controller
         if($user->type==="Admin") {
             return redirect()->intended('/admin');
         }
-        return redirect()->intended('/home');
+        return redirect()->intended('/');
     }
 }
