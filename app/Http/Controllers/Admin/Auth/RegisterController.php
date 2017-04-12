@@ -47,9 +47,10 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-       $messages = [
-    'emailid.required' => 'The :attribute field is required.',
-];
+          $messages = [
+            'emailid.unique' => 'The email has already been taken.',
+            ];
+
 
         return Validator::make($data, [
             'name' => 'required|max:255',
@@ -81,10 +82,5 @@ class RegisterController extends Controller
         return redirect()->intended('/');
     }
 
-    public function messages()
-    {
-    return [
-        'emailid.required' => 'The email has already been taken.',];
-        
-}
+   
 }
