@@ -10,6 +10,11 @@ use File;
 
 class DocumentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -55,7 +60,7 @@ class DocumentController extends Controller
     {
 
        
-        try{
+       
 
          $this->validate($request, [
                 'doc_name' => 'required|unique:tbl_document',
@@ -63,10 +68,10 @@ class DocumentController extends Controller
                 'publish_date' => 'required',
                 'category' => 'required',
                 ]);
-
+         
          $date = date('Y-m-d', strtotime($request->publish_date));
        
-
+ try{   
 
         if($request->doc_cover)
         { 
@@ -97,12 +102,12 @@ class DocumentController extends Controller
              }
              else
              {
-                return redirect('admin/documents')->with('errors','Document Insertion Failed');
+                return redirect('admin/documents/create')->with('errors','Document Insertion Failed');
              }
 
 
         }catch(\Exception $e){
-        return $e;
+        
           
       }
     
@@ -147,7 +152,7 @@ class DocumentController extends Controller
      */
     public function update(Request $request, $id)
     {
-    try{
+    
         $document = new Document;
 
         $this->validate($request, [
@@ -156,6 +161,7 @@ class DocumentController extends Controller
                 'publish_date' => 'required',
                 'category' => 'required',
                 ]);
+        try{
 
          $date = date('Y-m-d', strtotime($request->publish_date));
         if($request->doc_cover)

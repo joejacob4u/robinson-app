@@ -1,6 +1,7 @@
-@extends('layouts.ui_app')
+<?php /*@extends('layouts.ui_app')
 
-@section('content')
+@section('content') */ ?>
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -11,7 +12,7 @@
               <h3><i class="fa fa-warning text-yellow"></i> Oops! Page not found.</h3>
               <p>
                 We could not find the page you were looking for.
-                Meanwhile, you may <a href="{{'/'}}">return to dashboard</a> or try using the search form.
+                Meanwhile, you may <a href="{{'/'}}">return to HOME</a> or try using the search form.
               </p>
               <form class="search-form">
                 <div class="input-group">
@@ -25,4 +26,5 @@
         </div>
     </div>
 </div>
-@endsection
+
+<?php /*@endsection*/ ?>

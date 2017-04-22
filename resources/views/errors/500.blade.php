@@ -1,6 +1,6 @@
-@extends('layouts.ui_app')
+<?php /*@extends('layouts.ui_app')
 
-@section('content')
+@section('content') */ ?>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -25,4 +25,4 @@
         </div>
     </div>
 </div>
-@endsection
+<?php /*@endsection*/ ?>

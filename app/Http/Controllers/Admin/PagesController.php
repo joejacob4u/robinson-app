@@ -9,6 +9,12 @@ use App\Document;
 
 class PagesController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -46,14 +52,14 @@ class PagesController extends Controller
     public function store(Request $request)
     {
                
-             try{
+            
                 $this->validate($request, [
                 'doc_page_no' => 'required',
                 'doc_page_content' => 'required',
                 
                 ]);
 
-
+                 try{
        
 
         $data=array(
@@ -125,13 +131,13 @@ class PagesController extends Controller
     {
 
 
-        try{
+       
          $this->validate($request, [
                 'doc_page_no' => 'required',
                 'doc_page_content' => 'required',
                
                 ]);
-        
+         try{
        
 
        //return $request->input();
