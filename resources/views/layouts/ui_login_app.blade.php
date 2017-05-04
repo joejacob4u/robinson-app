@@ -10,7 +10,7 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
     <link rel="icon" href="img/favicon.png">
-    <title>ReaderSpeakTrack</title>
+    <title>Reader Raven</title>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{{ asset ("/bower_components/bootstrap/dist/css/bootstrap.min.css") }}">
     <link rel="stylesheet" href="{{ asset ("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css") }}">
@@ -42,7 +42,7 @@
             <span class="icon-bar bar2"></span>
             <span class="icon-bar bar3"></span>
           </button>
-          <a class="navbar-brand" href="profile.html">ReaderSpeakTrack</a>
+          <a class="navbar-brand" href="/">Reader Raven</a>
         </div>
       </div>
     </nav>

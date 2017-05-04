@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Mail\MailStudent;
 use App\User;
+use App\Student;
 
 class AccountsController extends Controller
 {
@@ -49,25 +51,21 @@ class AccountsController extends Controller
     {
         
 
-
         $this->validate($request, [
-                'name' => 'required|max:255',
-                'email' => 'required|email|max:255|unique:users,email',
-                'password' => 'required|min:6',
+                'email' => 'required|email|max:255|unique:students,email',
                 ]);
          
-//return \Auth::user();
+
 
         try{
 
-        $result=User::create([
-            'name' => $request->name,
+        $result=Student::create([
             'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'type'=>'Student',
             'parent_id'=>\Auth::user()->id,
-        ]);
+        ]); 
 
+
+         \Mail::to($request->email)->send(new MailStudent);
 
          if($result)
              {
@@ -220,7 +218,8 @@ class AccountsController extends Controller
         {
             $result=User::where('id',\Auth::user()->id)->update(['type'=>'Student']);
 
-            return redirect('/');
+
+            return redirect('/')->with('success','Successfully Deleted Successfully');
 
         }
         

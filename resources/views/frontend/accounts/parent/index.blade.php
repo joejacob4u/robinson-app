@@ -272,12 +272,7 @@
                                
                                    {!!Form::open( ['route' => 'accounts.store','files' => true]) !!}
                                   <input name="_token" type="hidden" value="{!! csrf_token() !!}" />
-                                  <div class="form-group">
-                                      <div class="input-group">
-                                          <span class="input-group-addon"><i class="fa fa-user darkorange"></i></span>
-                                          <input type="text" id="edit_name" name="name" class="form-control" placeholder="Username" required>
-                                      </div>
-                                  </div>
+
                                   <div class="form-group">
                                       <div class="input-group">
                                           <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
@@ -285,16 +280,11 @@
                                       </div>
                                   </div>
 
-                                  <div class="form-group">
-                                      <div class="input-group">
-                                          <span class="input-group-addon"><i class="glyphicon glyphicon-lock maroon"></i></span>
-                                          <input type="password" id="edit_password" name="password" class="form-control" placeholder="Password" required>
-                                      </div>
-                                  </div>
+                                 
 
                                   <div class="col-md-12" style="text-align: center;">
                                   <div class="form-group">
-                                  <input class="btn btn-primary" type="submit" id="submit" />
+                                  <input class="btn btn-primary" type="submit" id="submit" value="Add Student" />
                                   </div>
                                   </div>
 

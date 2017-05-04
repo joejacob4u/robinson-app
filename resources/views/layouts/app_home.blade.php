@@ -17,12 +17,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html"><b>DayDay</b></a>
+          <a class="navbar-brand" href="index.html"><b>Reader Raven</b></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li class="actives"><a href="#">Read</a></li>
-            <li><a href="/accounts">Accounts</a></li>
+            <li><a href="/accounts">My Account</a></li>
 
              <li> <a href="{{ route('logout') }}"  onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

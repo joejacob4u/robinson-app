@@ -37,6 +37,8 @@ Route::get('accounts/user-type/{user}', 'AccountsController@userType');
 
 
 
+
+
  
  
  

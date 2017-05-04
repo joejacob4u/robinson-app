@@ -7,7 +7,7 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
     <link rel="icon" href="img/favicon.png">
-    <title>Read Speak Track</title>
+    <title>Reader Raven</title>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{{ asset ("/bower_components/bootstrap/dist/css/bootstrap.min.css") }}">
     <link rel="stylesheet" href="{{ asset ("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css") }}">

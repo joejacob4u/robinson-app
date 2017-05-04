@@ -2,6 +2,27 @@
 @extends('layouts.app_home')
 @section('content')
 
+ @if (session('success'))
+
+  <div class="container page-content">
+      <div class="row">
+        <div class="col">
+          <div class="widget">
+            <div class="table-responsive">
+             <div class="alert alert-info">
+               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Welcome!</strong> you have a subscription under {{ session('success') }}
+</div>
+            
+
+            </div>
+
+            </div>
+        </div>
+         </div>
+         </div>
+       
+ @endif
 
 <style type="text/css">
   #modalselect .modal-dialog .modal-content

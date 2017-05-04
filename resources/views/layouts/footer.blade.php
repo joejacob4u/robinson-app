@@ -2,7 +2,7 @@
   <div class="pull-right hidden-xs">
     <b>Version</b> 2.3.8
   </div>
-  <strong>Copyright &copy; 2017</a>.</strong> All rights
+  <strong>Copyright &copy; Reader Raven 2017</a>.</strong> All rights
   reserved.
 </footer>
 <script src="{{ asset ("/bower_components/jquery/dist/jquery.min.js") }}" type="text/javascript"></script>
