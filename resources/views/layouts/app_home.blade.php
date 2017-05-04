@@ -22,7 +22,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li class="actives"><a href="#">Read</a></li>
-            <li><a href="#">Accounts</a></li>
+            <li><a href="/accounts">Accounts</a></li>
 
              <li> <a href="{{ route('logout') }}"  onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

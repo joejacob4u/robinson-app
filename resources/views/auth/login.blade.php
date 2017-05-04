@@ -73,7 +73,7 @@
                                 @endif
                       </div>
                       <div class="form-group">
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                        <input id="password-confirm" type="password" class="form-control" placeholder="Confirm Password" name="password_confirmation" required>
                       </div>
                       <button type="submit" class="btn btn-azure">Register</button>
                     </form>

@@ -111,7 +111,7 @@
                       <div class="widget-body">
                           <div class="collapse in">
                                   
-                                   {!!Form::model($data,['route' =>['accounts.update',0],'files' =>true])!!}
+                                   {!!Form::open(['route' =>['accounts.update',0],'files' =>true])!!}
                                    {{ method_field('PUT') }} 
                                   <input name="_token" type="hidden" value="{!! csrf_token() !!}" />
                                   <input name="edit_id" id="edit_id" type="hidden" value="123" />
