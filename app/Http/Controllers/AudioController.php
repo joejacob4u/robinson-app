@@ -10,6 +10,19 @@ use File;
 
 class AudioController extends Controller
 {
+
+
+  public function index()
+    {
+
+                
+        
+ 
+        return view('frontend.audio');
+
+    }
+
+
     public function save(Request $request)
     {
         foreach(array('video', 'audio') as $type)

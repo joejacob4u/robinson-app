@@ -10,6 +10,7 @@
                     <div class="center">
                       <h4 class="m-b-0"><span class="icon-text">Login</span></h4>
                       <p class="text-muted">Access your account</p>
+                      
                     </div>
                     <form role="form" method="POST" action="{{ route('login') }}">
                     {{ csrf_field() }}
