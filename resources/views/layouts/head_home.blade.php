@@ -21,6 +21,11 @@
     <script src="{{ asset ("/bower_components/bootstrap/dist/js/bootstrap.min.js") }}" type="text/javascript"></script>
     <script src="{{ asset ("/assets/js/custom.js")}}"></script>
     <script src="{{ asset ("/assets/js/techjs.js")}}"></script>
+
+
+    <link href="{{ asset ("/assets/css/file_manager.css")}}" rel="stylesheet">
+    <link href="{{ asset ("/assets/css/messages1.css")}}" rel="stylesheet">
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>

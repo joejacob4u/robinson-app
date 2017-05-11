@@ -29,8 +29,10 @@ Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 
 Route::resource('accounts', 'AccountsController');
-
 Route::get('accounts/user-type/{user}', 'AccountsController@userType');
+
+Route::resource('read/', 'ReadController');
+Route::resource('read/{id}/pages', 'ReadPagesController');
 
 
 
