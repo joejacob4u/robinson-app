@@ -53,3 +53,33 @@ $.ajaxSetup({
                }
             });
          }
+
+
+
+         function page(did,pid){
+          var did=did
+          var pid=pid;
+         // $('#edit_id').val(id);
+            $.ajax({
+               type:'GET',
+               url:'/read/document-'+pid+'/pages/'+pid,
+               success:function(data){
+                   console.log(data);
+
+                 console.log(data.doc_page_content);
+                  $('#page').html(data.doc_page_content);
+    
+
+
+               }
+            });
+         }
+
+        
+
+      $(function() {
+        $('.lipages').on('click', function() {
+            $('.lipages').removeClass('active');
+            $(this).addClass('active');
+        });
+      });

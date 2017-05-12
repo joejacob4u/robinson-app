@@ -5,35 +5,12 @@
 
 
 <!-- Begin page content -->
-
- 
-
-    <div class="container page-content"> 
-
-
-
+    <div class="container page-content">
       <div class="row">
-
-      <div class="row">
-
-      <div class="span2" style="margin-left: 450px;">
-      <ul class="nav nav-pills">
-                           
-      <a href="#" class="btn btn-info" role="button">Read <span class="fa fa-microphone"></span></a>
-      <a href="#" class="btn btn-danger" role="button">Stop <span class="fa fa-stop"></span></a>
-                                    
-      </ul>    
-     </div>
-                                
-       </div>
-       </div> 
-       </br>
-
         <div class="col-md-4 bg-white">
-
           <div class=" row border-bottom padding-sm" style="height: 40px;overflow-y:auto">
           Pages
-          </div> 
+          </div>
           <!-- member list -->
           <ul class="friend-list">
           {{-- <li class="active">
@@ -43,16 +20,16 @@
                 <strong>Page Number:</strong>
               </div>
               <div class="last-message text-muted">Hello, Are you there?</div>
-              <small class="time text-muted">Just now</small> 
+              <small class="time text-muted">Just now</small>
               <small class="chat-alert label label-danger">1</small>
             </a>
           </li> --}}
-          @foreach($pages as $data)
+          @foreach($page as $data)
           
-          <li class="lipages">
-              <a href="#" onclick="page({{$data->doc_id}},{{$data->id}})" class="clearfix">
+          <li>
+              <a href="/read/document-{{$data->doc_id}}/pages/{{$data->id}}" class="clearfix">
               <div class="friend-name"> 
-                <strong>Page Number : {{$data->doc_page_no}}</strong>
+                <strong>Page Number : </strong>
               </div>
               <div class="last-message text-muted">Tags : {{$data->tags}}</div>
           
@@ -74,10 +51,10 @@
 
                   <div class="chat-body clearfix">
                     <div class="header">
-                      <strong class="primary-font">Page Number</strong>
+                      <strong class="primary-font">Document:<br>Page Number:</strong>
                       
                     </div>
-                    <p id='page'>
+                    <p>
                     Page Content here
                     </p>
                   </div>

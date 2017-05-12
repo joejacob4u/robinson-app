@@ -17,8 +17,8 @@
                       <div class="hr-line-dashed"></div>
               
                       <ul class="folder-list" style="padding: 0">
-                          <li><a href=""><i class="fa fa-book"></i> Books</a></li>
-                          <li><a href=""><i class="fa fa-file"></i> Documents</a></li>
+                          <li><a href="#"><i class="fa fa-book"></i> Books</a></li>
+                          <li><a href="/read/documents"><i class="fa fa-file"></i> Documents</a></li>
 
                       </ul>
                       <div class="clearfix"></div>
@@ -35,11 +35,11 @@
 
                   <div class="file-box">
                       <div class="file">
-                          <a href="/read/{{$data->id}}/pages">
+                          <a href="/read/document-{{$data->id}}/pages">
                               <span class="corner"></span>
 
                               <div class="image">
-                                  <img alt="image" class="img-responsive" src="files/documents/cover/{{$data->doc_cover}}">
+                                  <img alt="image" class="img-responsive" src="/files/documents/cover/{{$data->doc_cover}}">
                               </div>
                               <div class="file-name">
                                   {{$data->doc_name}}

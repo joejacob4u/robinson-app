@@ -31,8 +31,14 @@ Route::get('/home', 'HomeController@index');
 Route::resource('accounts', 'AccountsController');
 Route::get('accounts/user-type/{user}', 'AccountsController@userType');
 
-Route::resource('read/', 'ReadController');
-Route::resource('read/{id}/pages', 'ReadPagesController');
+
+Route::resource('read/documents', 'ReadController');
+
+Route::get('/read', function () {
+    return redirect('/read/documents');
+});
+Route::resource('read/documents', 'ReadController');
+Route::resource('read/document-{id}/pages', 'ReadPagesController');
 
 
 
