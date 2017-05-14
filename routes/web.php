@@ -15,7 +15,7 @@ Route::get('/test','AudioController@index');
 
 Route::post('/process','AudioController@processSpeech');
 
-Route::post('/record','AudioController@save');
+//Route::post('/record','AudioController@save');
 
 
  
@@ -39,6 +39,8 @@ Route::get('/read', function () {
 });
 Route::resource('read/documents', 'ReadController');
 Route::resource('read/document-{id}/pages', 'ReadPagesController');
+
+Route::post('/record','WRTCController@save');
 
 
 

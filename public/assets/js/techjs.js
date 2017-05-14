@@ -65,9 +65,11 @@ $.ajaxSetup({
                url:'/read/document-'+pid+'/pages/'+pid,
                success:function(data){
                    console.log(data);
-
+                   stopRecording();
                  console.log(data.doc_page_content);
                   $('#page').html(data.doc_page_content);
+                  $('#doc_id').val(data.doc_id);
+                  $('#doc_page_no').val(data.doc_page_no);
     
 
 
