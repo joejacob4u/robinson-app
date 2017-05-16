@@ -84,7 +84,7 @@
                 },
                 success:function(data)
                 {
-                  $('#resultModal #transcription').val(data.transcribed_text);
+                  $('#resultModal #transcription').val(data.transcription);
                   $('#resultModal #accuracy').val(data.accuracy);
                   $('#resultModal').modal('show');
                 },

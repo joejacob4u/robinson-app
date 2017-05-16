@@ -70,7 +70,7 @@ class ResultsController extends Controller
 
       File::delete($list_path, $combined_audio_path, $converted_audio_path);
 
-      UserDocumentRead::where('id',$document_page->id)->update(['processed' => 1,'transcribed_text' => $results[0]['transcript'],'accuracy' => $similarity]);
+      UserDocumentRead::where('id',$document_page->id)->update(['processed' => 1,'transcription' => $results[0]['transcript'],'accuracy' => $similarity]);
 
     }
 
