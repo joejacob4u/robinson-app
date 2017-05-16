@@ -3,7 +3,7 @@ $.ajaxSetup({
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
-         
+
 
          function deluser(id){
           var id=id;
@@ -20,8 +20,8 @@ $.ajaxSetup({
                success:function(data){
                   //$("#edit_name").val(data.name);
                   //document.getElementById('edit_name').value="adsfsf";
-                 
-                  
+
+
                   $('#show_id').val(id);
                   $('#show_name').html(data.name);
                   $('#show_email').html(data.email);
@@ -42,8 +42,8 @@ $.ajaxSetup({
                success:function(data){
                   //$("#edit_name").val(data.name);
                   //document.getElementById('edit_name').value="adsfsf";
-                 
-                  
+
+
                   $('#show_id').val(id);
                   $('#edit_name').val(data.name);
                   $('#edit_email').val(data.email);
@@ -60,6 +60,8 @@ $.ajaxSetup({
           var did=did
           var pid=pid;
          // $('#edit_id').val(id);
+         saveUserState('read');
+         
             $.ajax({
                type:'GET',
                url:'/read/document-'+pid+'/pages/'+pid,
@@ -70,14 +72,14 @@ $.ajaxSetup({
                   $('#page').html(data.doc_page_content);
                   $('#doc_id').val(data.doc_id);
                   $('#doc_page_no').val(data.doc_page_no);
-    
+
 
 
                }
             });
          }
 
-        
+
 
       $(function() {
         $('.lipages').on('click', function() {

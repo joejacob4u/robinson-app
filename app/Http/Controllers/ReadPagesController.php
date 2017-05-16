@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\DocumentPages;
 use App\Document;
+use App\UserDocumentRead;
+use Auth;
 
 class ReadPagesController extends Controller
 {
@@ -52,7 +54,7 @@ class ReadPagesController extends Controller
     public function show($did,$id)
     {
       return  $page=DocumentPages::where('id',$id)->first();
-       
+
     }
 
     /**
@@ -87,5 +89,20 @@ class ReadPagesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function saveUserState(Request $request)
+    {
+      $document_read = UserDocumentRead::where('user_id',Auth::user()->id)
+                                        ->where('document_id',$request->document_id)
+                                        ->where('page_no',$request->page_no)->first();
+
+      if($document_read == null)
+      {
+        if(UserDocumentRead::create($request->all()))
+        {
+
+        }
+      }
     }
 }

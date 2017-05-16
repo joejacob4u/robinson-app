@@ -61,6 +61,7 @@ return [
             'secret' => env('AWS_SECRET'),
             'region' => env('AWS_REGION'),
             'bucket' => env('AWS_BUCKET'),
+            'url' => env('AWS_ENDPOINT')
         ],
 
         'gcs' => [
@@ -68,7 +69,7 @@ return [
             'project_id' => env('GOOGLE_CLOUD_PROJECT_ID', 'your-project-id'),
             'key_file' => env('GOOGLE_CLOUD_KEY_FILE', null),
             'bucket' => env('GOOGLE_CLOUD_STORAGE_BUCKET', 'your-bucket'),
-            'path_prefix' => env('GOOGLE_CLOUD_STORAGE_PATH_PREFIX', null), 
+            'path_prefix' => env('GOOGLE_CLOUD_STORAGE_PATH_PREFIX', null),
             'storage_api_uri' => env('GOOGLE_CLOUD_STORAGE_API_URI', null),
         ],
 

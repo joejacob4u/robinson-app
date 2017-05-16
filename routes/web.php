@@ -18,7 +18,7 @@ Route::post('/process','AudioController@processSpeech');
 //Route::post('/record','AudioController@save');
 
 
- 
+
 
 Auth::routes();
 Route::get('/admin/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
@@ -39,17 +39,6 @@ Route::get('/read', function () {
 });
 Route::resource('read/documents', 'ReadController');
 Route::resource('read/document-{id}/pages', 'ReadPagesController');
+Route::post('read/document/save-state','ReadPagesController@saveUserState');
 
 Route::post('/record','WRTCController@save');
-
-
-
-
-
-
-
-
- 
- 
- 
-

@@ -37,7 +37,7 @@ Breadcrumbs::register('admin', function($breadcrumbs)
 
  Breadcrumbs::register('pages.index', function($breadcrumbs,$id) use($doc)
 {
-	$data=$doc->where('id',$id)->first(); 
+	$data=$doc->where('id',$id)->first();
     $breadcrumbs->parent('documents.index');
     $breadcrumbs->push($data->doc_name, route('pages.index',$id));
 });
@@ -61,8 +61,7 @@ Breadcrumbs::register('admin', function($breadcrumbs)
     $breadcrumbs->push('View', route('pages.index',$id));
 });
 
-
-  
-
-
- 
+Breadcrumbs::register('results', function($breadcrumbs)
+{
+    $breadcrumbs->push('Result', route('results'));
+});

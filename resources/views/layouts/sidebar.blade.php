@@ -23,7 +23,7 @@
   <!-- /.search form -->
   <!-- sidebar menu: : style can be found in sidebar.less -->
   <ul class="sidebar-menu">
-     
+
 
     <li class="header text-yellow"><strong>ADMIN</strong></li>
 
@@ -38,9 +38,10 @@
           <ul class="treeview-menu">
             <li><a href="#"><i class="fa fa-circle-o"></i>Books</a></li>
             <li><a href="/admin/documents"><i class="fa fa-circle-o"></i>Documents</a></li>
-          
+
           </ul>
-      </li> 
+      </li>
+      <li><a href="{{url('admin/results')}}"><i class="fa fa-circle-o"></i>Results</a></li>
       <li>
               <a href="{{ route('logout') }}"  onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -49,7 +50,7 @@
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                 </form>
-      </li> 
+      </li>
   </ul>
 </section>
 </aside>
