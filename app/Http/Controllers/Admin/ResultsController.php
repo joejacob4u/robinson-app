@@ -71,7 +71,7 @@ class ResultsController extends Controller
 
                File::delete($list_path, $combined_audio_path, $converted_audio_path);
 
-               UserDocumentRead::where('id',$document_page->id)->update(['processed' => $processed,'transcribed_text' => $transcription,'accuracy' => $accuracy,'status' => $status]);
+               UserDocumentRead::where('id',$document_page->id)->update(['processed' => $processed,'transcription' => $transcription,'accuracy' => $accuracy,'status' => $status]);
            }
         }
     }
