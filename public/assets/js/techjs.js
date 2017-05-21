@@ -60,8 +60,8 @@ $.ajaxSetup({
           var did=did
           var pid=pid;
          // $('#edit_id').val(id);
-         saveUserState('read');
-         
+         saveUserState('seen');
+
             $.ajax({
                type:'GET',
                url:'/read/document-'+pid+'/pages/'+pid,

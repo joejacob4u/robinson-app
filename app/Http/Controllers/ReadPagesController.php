@@ -104,5 +104,8 @@ class ReadPagesController extends Controller
 
         }
       }
+      else {
+        $document_read->update(['status' => $request->status]);
+      }
     }
 }

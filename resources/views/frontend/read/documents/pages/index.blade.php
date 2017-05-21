@@ -181,6 +181,7 @@ function startRecording()
 
 function stopRecording()
 {
+  saveUserState('attempted');
   $(".progress").hide();
   setTimeout(
       function()
