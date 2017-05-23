@@ -20,7 +20,7 @@
     <script src="{{ asset ("/bower_components/jquery/dist/jquery.min.js") }}" type="text/javascript"></script>
     <script src="{{ asset ("/bower_components/bootstrap/dist/js/bootstrap.min.js") }}" type="text/javascript"></script>
     <script src="{{ asset ("/assets/js/custom.js")}}"></script>
-    <script src="{{ asset ("/assets/js/techjs.js")}}"></script>
+    <script src="{{ asset ("/assets/js/app.js")}}"></script>
 
 
     <link href="{{ asset ("/assets/css/file_manager.css")}}" rel="stylesheet">

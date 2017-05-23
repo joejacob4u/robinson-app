@@ -19,11 +19,24 @@
       <div class="span2" style="margin-left: 450px;">
       <ul class="nav nav-pills">
 
-      <a href="#" onclick="startRecording()" class="btn btn-info" role="button">Read <span class="fa fa-microphone"></span></a>
+      <a href="#" onclick="startRecording()" id="start"  class="btn btn-info" role="button">Read <span class="fa fa-microphone"></span></a>
+
+      <a style="display:none" href="#" id="pause" onclick="pauseRecording()"  class="btn btn-info" role="button">Pause <span class="fa fa-pause"></span></a>
+
+      <a style="display:none" href="#" id="resume" onclick="resumeRecording()"  class="btn btn-info" role="button">Resume <span class="fa fa-play"></span></a>
+
       <a href="#" onclick="stopRecording()" id="stop" class="btn btn-danger" role="button">Stop <span class="fa fa-stop"></span></a>
+
+      <a href="#" onclick="getPrev()" class="btn btn-info" role="button"><span class="fa fa-step-backward"> Previous</span></a>
+      <a href="#" onclick="getNext()" id="stop" class="btn btn-danger" role="button">Next <span class="fa fa-step-forward"></span></a>
+
+
+      {{-- <a href="#" onclick="finishReading()" id="fnish" class="btn btn-danger" role="button">Finsh Reading <span class="fa fa-step-forward"></span></a> --}}
+
       <input type="hidden" value='1' id='doc_id'>
       <input type="hidden" value='1' id='doc_page_no'>
       <input type="hidden" value='document' id='type'>
+      <input type="hidden" value='{{\Auth::user()->id}}' id='user'>
 
 
       </ul>
@@ -53,7 +66,7 @@
           </li> --}}
           @foreach($pages as $data)
 
-          <li class="lipages">
+          <li class="lipages" id="page_{{$data->id}}">
               <a href="#" onclick="page({{$data->doc_id}},{{$data->id}})" class="clearfix">
               <div class="friend-name">
                 <strong>Page Number : {{$data->doc_page_no}}</strong>
@@ -104,6 +117,27 @@
     </div>
 
 
+ <!-- Edit Show -->
+    <div class="modal fade" id="modalShow" tabindex="-1" role="dialog" aria-labelledby="myModalAdd">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 align="center" class="modal-title" id="myModalLabel"></h4>
+          </div>
+
+    </div>
+    </div>
+    <!-- End Edit Model -->
+
+
+
+
+
+
+
+
+
 <script src="https://cdn.webrtc-experiment.com/MediaStreamRecorder.js"> </script>
 <script>
 
@@ -137,6 +171,10 @@ function onMediaError(e) {
 function startRecording()
 {
   $(".progress").show();
+
+  $("#start").hide();
+  $("#pause").show();
+
   var mediaConstraints = {
       audio: true
   };
@@ -183,6 +221,11 @@ function stopRecording()
 {
   saveUserState('attempted');
   $(".progress").hide();
+
+  $("#pause").hide();
+  $("#resume").hide();
+  $("#start").show();
+
   setTimeout(
       function()
       {
@@ -191,6 +234,74 @@ function stopRecording()
       }, 3000);
 
 }
+
+
+
+function finishReading()
+{
+  saveUserState('finished');
+  $(".progress").hide();
+
+  $("#pause").hide();
+  $("#resume").hide();
+  $("#start").show();
+
+  setTimeout(
+      function()
+      {
+        mediaRecorder.stop();
+        $('#stop').prop('disabled',false);
+      }, 3000);
+
+}
+
+
+
+
+function pauseRecording()
+{
+  saveUserState('attempted');
+  $(".progress").hide();
+
+    $("#pause").hide();
+    $("#resume").show();
+
+
+  setTimeout(
+      function()
+      {
+        mediaRecorder.pause();
+        $('#stop').prop('disabled',false);
+      }, 3000);
+
+}
+
+
+function resumeRecording()
+{
+  saveUserState('attempted');
+  $(".progress").show();
+
+    $("#pause").show();
+    $("#resume").hide();
+
+
+  setTimeout(
+      function()
+      {
+        
+        mediaRecorder.resume();
+        $('#stop').prop('disabled',false);
+      }, 3000);
+
+}
+
+
+
+
+
+
+
 
 function saveUserState(state)
 {

@@ -53,7 +53,21 @@ class ReadPagesController extends Controller
      */
     public function show($did,$id)
     {
-      return  $page=DocumentPages::where('id',$id)->first();
+
+
+
+      $page=DocumentPages::where('id',$id)->first();
+
+      if($page){
+
+        return $page;
+
+      }
+
+      return $data=array(
+                    'status'  =>"none",
+                   
+                  );  
 
     }
 
@@ -108,4 +122,13 @@ class ReadPagesController extends Controller
         $document_read->update(['status' => $request->status]);
       }
     }
+
+
+        public function readStatus($user,$did,$id)
+    {
+       
+
+       return $page=UserDocumentRead::where('page_no',$id)->where('document_id',$did)->where('user_id',$user)->select('status')->first()->status;
+    }
+
 }
