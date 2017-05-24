@@ -61,18 +61,22 @@ $.ajaxSetup({
          function page(did,pid){
           
          // $('#edit_id').val(id);
-         saveUserState('seen');
+         
 
             $.ajax({
                type:'GET',
-               url:'/read/document-'+pid+'/pages/'+pid,
+               url:'/read/document-'+did+'/pages/'+pid,
                success:function(data){
                    console.log(data);
                    stopRecording();
                  console.log(data.doc_page_content);
                   $('#page').html(data.doc_page_content);
                   $('#doc_id').val(data.doc_id);
+                  $('#page_no').html(data.doc_page_no);
                   $('#doc_page_no').val(data.doc_page_no);
+
+                  stopRecording();
+                  saveUserState('seen');
 
 
 
@@ -100,17 +104,13 @@ function getNext() {
    var user=$("#user").val();
 
    var pid=parseInt(pid);
+  console.log(pid);
 
    var next = pid+1;
 
     console.log(next);
 
 
-    //var st=status(did,pid,user);
-
-   //str=JSON.stringify(st);
-
-   //alert(st);
    
     $.ajax({
                type:'GET',
@@ -135,7 +135,11 @@ function getNext() {
                   console.log(data.doc_page_content);
                   $('#page').html(data.doc_page_content);
                   $('#doc_id').val(data.doc_id);
-                  $('#doc_page_no').val(data.doc_page_no);
+                  $('#page_no').html(data.doc_page_no);
+                  $('#doc_page_no').val(next);
+
+                  stopRecording();
+                 
 
                 }
 
@@ -151,9 +155,16 @@ function getPrev() {
    var pid=$("#doc_page_no").val();
    var did=$("#doc_id").val();
 
+
+
+
    var pid=parseInt(pid);
 
+   console.log(pid);
+
    var prev = pid-1;
+
+    console.log(prev);
 
 
     $.ajax({
@@ -179,7 +190,11 @@ function getPrev() {
                   console.log(data.doc_page_content);
                   $('#page').html(data.doc_page_content);
                   $('#doc_id').val(data.doc_id);
-                  $('#doc_page_no').val(data.doc_page_no);
+                  $('#doc_page_no').val(prev);
+                  $('#page_no').val(data.doc_page_no);
+
+
+                  stopRecording();
 
                 }
 

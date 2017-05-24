@@ -19,19 +19,19 @@
       <div class="span2" style="margin-left: 450px;">
       <ul class="nav nav-pills">
 
-      <a href="#" onclick="startRecording()" id="start"  class="btn btn-info" role="button">Read <span class="fa fa-microphone"></span></a>
+      <a href="#" onclick="startRecording()" id="start"  class="btn btn-success" role="button">Read <span class="fa fa-microphone"></span></a>
 
       <a style="display:none" href="#" id="pause" onclick="pauseRecording()"  class="btn btn-info" role="button">Pause <span class="fa fa-pause"></span></a>
 
       <a style="display:none" href="#" id="resume" onclick="resumeRecording()"  class="btn btn-info" role="button">Resume <span class="fa fa-play"></span></a>
 
-      <a href="#" onclick="stopRecording()" id="stop" class="btn btn-danger" role="button">Stop <span class="fa fa-stop"></span></a>
+      <a href="#" style="display:none" onclick="stopRecording()" id="stop" class="btn btn-danger" role="button">Stop <span class="fa fa-stop"></span></a>
 
-      <a href="#" onclick="getPrev()" class="btn btn-info" role="button"><span class="fa fa-step-backward"> Previous</span></a>
-      <a href="#" onclick="getNext()" id="stop" class="btn btn-danger" role="button">Next <span class="fa fa-step-forward"></span></a>
+      <a href="#" onclick="getPrev()" class="btn btn-warning" role="button"><span class="fa fa-step-backward"> Previous</span></a>
+      <a href="#" onclick="getNext()" id="stop" class="btn btn-warning" role="button">Next <span class="fa fa-step-forward"></span></a>
 
 
-      {{-- <a href="#" onclick="finishReading()" id="fnish" class="btn btn-danger" role="button">Finsh Reading <span class="fa fa-step-forward"></span></a> --}}
+      <a href="#" onclick="finishReading()" id="fnish" class="btn btn-primary" role="button">Finsh Reading <span class="fa fa-cloud"></span></a>
 
       <input type="hidden" value='1' id='doc_id'>
       <input type="hidden" value='1' id='doc_page_no'>
@@ -39,7 +39,8 @@
       <input type="hidden" value='{{\Auth::user()->id}}' id='user'>
 
 
-      </ul>
+
+      </ul> 
      </div>
 
        </div>
@@ -91,7 +92,7 @@
 
                   <div class="chat-body clearfix">
                     <div class="header">
-                      <strong class="primary-font">Page Number</strong>
+                      Page Number:<strong class="primary-font" id="page_no"></strong>
 
                     </div>
                     <p id='page'>
@@ -170,10 +171,12 @@ function onMediaError(e) {
 }
 function startRecording()
 {
-  $(".progress").show();
 
+  saveUserState('reading');
+  $(".progress").show();
   $("#start").hide();
   $("#pause").show();
+  $("#stop").show();
 
   var mediaConstraints = {
       audio: true
@@ -219,13 +222,20 @@ function startRecording()
 
 function stopRecording()
 {
-  saveUserState('attempted');
+  
   $(".progress").hide();
 
   $("#pause").hide();
+  $("#stop").hide();
   $("#resume").hide();
   $("#start").show();
 
+
+
+if(typeof mediaRecorder != 'undefined')
+{
+
+saveUserState('stoped');
   setTimeout(
       function()
       {
@@ -233,15 +243,16 @@ function stopRecording()
         $('#stop').prop('disabled',false);
       }, 3000);
 
+  }
+
 }
 
 
 
 function finishReading()
 {
-  saveUserState('finished');
+  saveUserState('attempted');
   $(".progress").hide();
-
   $("#pause").hide();
   $("#resume").hide();
   $("#start").show();
@@ -260,7 +271,7 @@ function finishReading()
 
 function pauseRecording()
 {
-  saveUserState('attempted');
+  saveUserState('pasued');
   $(".progress").hide();
 
     $("#pause").hide();
