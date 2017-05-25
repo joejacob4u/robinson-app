@@ -27,8 +27,8 @@
 
       <a href="#" style="display:none" onclick="stopRecording()" id="stop" class="btn btn-danger" role="button">Stop <span class="fa fa-stop"></span></a>
 
-      <a href="#" onclick="getPrev()" class="btn btn-warning" role="button"><span class="fa fa-step-backward"> Previous</span></a>
-      <a href="#" onclick="getNext()" id="stop" class="btn btn-warning" role="button">Next <span class="fa fa-step-forward"></span></a>
+      {{-- <a href="#" onclick="getPrev()" class="btn btn-warning" role="button"><span class="fa fa-step-backward"> Previous</span></a>
+      <a href="#" onclick="getNext()" id="stop" class="btn btn-warning" role="button">Next <span class="fa fa-step-forward"></span></a> --}}
 
 
       <a href="#" onclick="finishReading()" id="fnish" class="btn btn-primary" role="button">Finsh Reading <span class="fa fa-cloud"></span></a>
@@ -80,40 +80,56 @@
 
           @endforeach
           </ul>
+
         </div>
-
-        <!--=========================================================-->
-        <!-- selected chat -->
-        <div class="col-md-8 bg-white ">
-          <div class="chat-message" style="max-height: 600px;overflow-y:auto ">
-            <ul class="chat">
-
-                <li class="right clearfix">
-
-                  <div class="chat-body clearfix">
-                    <div class="header">
-                      Page Number:<strong class="primary-font" id="page_no"></strong>
-
-                    </div>
-                    <p id='page'>
-                    Page Content here
-                    </p>
-
-                  </div>
                   <div class="progress" style="display:none;">
                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                          Recording
                        </div>
                   </div>
+                  </br></br>
 
-                </li>
+        <!--=========================================================-->
+        <!-- selected chat -->
+        <div class="col-md-8 bg-white ">
+        <div class="butt">
+
+        <div class="col-md-4">
+        <button type="button" onclick="getPrev()" style="float: left;border-radius: 50px;"  class="btn btn-warning"><span class="fa fa-step-backward"> Previous</button>
+
+        </div>
+
+ <div class="col-md-4">
+         <!-- <button type="button" style="margin-left: auto;margin-right: auto;" class="btn btn-primary">Previous</button> -->
+                        Page Number : <div class="btn-group" >
+                              <div id="page_no"></div>
+                             
+                          </div>
+         </div>
+        <div class="col-md-4">
+        <button type="button" onclick="getNext()" class="btn btn-warning" style="float: right;border-radius: 50px;"> Next <span class="fa fa-step-forward"></button>
+        </div>
+          
+        </div>
 
 
+
+          <div class="chat-message" style="max-height: 600px;overflow-y:auto ">
+            
+              <div class="other-page">
+                
+
+                <p id="page"></p>
+            
+
+              </div>
 
 
           </div>
+          
+        </div> 
 
-        </div>
+
       </div>
     </div>
 

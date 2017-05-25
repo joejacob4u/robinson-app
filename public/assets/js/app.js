@@ -191,7 +191,7 @@ function getPrev() {
                   $('#page').html(data.doc_page_content);
                   $('#doc_id').val(data.doc_id);
                   $('#doc_page_no').val(prev);
-                  $('#page_no').val(data.doc_page_no);
+                  $('#page_no').html(data.doc_page_no);
 
 
                   stopRecording();
@@ -216,7 +216,7 @@ function status(did,pid,user){
                   //$("#edit_name").val(data.name);
                   //document.getElementById('edit_name').value="adsfsf";
 
-                  return data;
+                  return data.status;
               
 
 
