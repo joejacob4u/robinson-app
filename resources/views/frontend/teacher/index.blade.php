@@ -1,42 +1,73 @@
-@extends('layouts.app')
-@section('header','Results')
-@section('description','Analyze results here.')
+@extends('layouts.app_home')
 @section('content')
-@include('layouts.partials.success')
-@include('layouts.partials.errors')
 
-        <!-- Main content -->
-<section class="content">
-  <div class="box">
-    <div class="box-header with-border">
-        <h3 class="box-title">Results by Page</h3>
-      </div>
-          <div class="box-body">
-            <table id="tabledocument" class="table table-bordered table-striped">
-                      <thead>
-                        <tr>
-                          <th>User</th>
-                          <th>Document</th>
-                          <th>Page</th>
-                          <th>Result</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                          @foreach($user_document_reads as $user_document_read)
-                              <tr>
-                                <td>{{$user_document_read->user->name}}</td>
-                                <td>{{$user_document_read->document->doc_name}}</td>
-                                <td>{{$user_document_read->page_no}}</td>
-                                <td>{!! link_to('#','Result',['class' => 'btn-xs btn-warning','onclick' => 'getResults("'.$user_document_read->id.'")']) !!}</td>
-                              </tr>
-                            @endforeach
-                      </tbody>
-                    </table>
-              </div>
+
+
+
+
+  <div class="container page-content">
+      <div class="row">
+        <div class="col">
+          <div class="widget">
+            <div class="table-responsive">
+          
+            <table class="table user-list">
+              <thead>
+                <tr>
+                  <th><span>Student</span></th>
+                  <th><span>Books/Documents</span></th>
+                  <th><span>Page</span></th>
+                  <th><span>Results</span></th>
+                  <th>&nbsp;</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                 @foreach($data as $data) 
+
+
+
+                <tr>
+                  <td>
+                   
+                    {{$data->user->name}}
+                    
+                  </td>
+                  <td>
+                    {{$data->document->doc_name}}
+                  </td>
+                  
+                  <td>
+                    {{$data->page_no}}
+                  </td>
+
+
+                   <td>
+                    {!! link_to('#','View',['class' => 'btn-xs btn-warning','onclick' => 'getResults("'.$data->id.'")']) !!}
+                  </td>
+
+                </tr>
+
+
+                 @endforeach
+
+                
+              </tbody>
+            </table>
+            </div>
+
+            <ul class="pagination pull-right">
+            
+      
+            </ul>
+            </div>
         </div>
-  </div>
+      </div>
+    </div>
 
-  <!-- Start Modal-->
+
+
+<!-- Start Modal-->
   <div id="resultModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
@@ -64,9 +95,9 @@
     </div>
   </div>
   <!-- End Modal-->
-            @endsection
-       @section('script_code')
-        <script>
+  
+
+ <script>
             $(function () {
               $('#tabledocument').DataTable({
               });
@@ -76,7 +107,7 @@
             {
               $.ajax({
                 type: 'POST',
-                url: '{{ url('/get_result') }}',
+                url: '{{ url('admin/results/get_result') }}',
                 data: { '_token' : '{{ csrf_token() }}', 'id': id },
                 beforeSend:function()
                 {
@@ -100,4 +131,9 @@
             }
 
         </script>
-      @endsection
+
+
+
+@endsection
+
+

@@ -57,6 +57,9 @@
                     					 <a href="/accounts/user-type/1" class="btn btn-labeled btn-purple shiny">
                        				 <i class="btn-label glyphicon glyphicon-user"></i>Parent
                     					</a>
+                               <a href="/accounts/user-type/2" class="btn btn-labeled btn-blue shiny">
+                               <i class="btn-label glyphicon glyphicons-address-book"></i>Teacher
+                              </a>
 
 
                                       {{-- <input class="btn btn-success" type="submit" id="btnstudent" /> --}}

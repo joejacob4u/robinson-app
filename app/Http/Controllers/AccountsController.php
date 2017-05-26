@@ -219,7 +219,7 @@ class AccountsController extends Controller
             $result=User::where('id',\Auth::user()->id)->update(['type'=>'Student']);
 
 
-            return redirect('/')->with('success','Successfully Deleted Successfully');
+            return redirect('/home')->with('success','Successfully Deleted Successfully');
 
         }
         
@@ -228,6 +228,15 @@ class AccountsController extends Controller
 
             $result=User::where('id',\Auth::user()->id)->update(['type'=>'Parent']);
             return redirect('/accounts');
+
+        }
+
+
+        if($id==2)
+        {
+
+            $result=User::where('id',\Auth::user()->id)->update(['type'=>'Teacher']);
+            return redirect('/techer');
 
         }
 

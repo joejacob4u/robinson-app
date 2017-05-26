@@ -47,3 +47,8 @@ Route::post('read/document/save-state','ReadPagesController@saveUserState');
 Route::post('/record','WRTCController@save');
 
 Route::get('/read-status/{user}/{did}/{id}','ReadPagesController@readStatus');
+
+Route::get('/teacher','TeacherController@index');
+Route::get('/parent','TeacherController@index');
+
+Route::post('/get_result', 'ResultsController@getResults');

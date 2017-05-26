@@ -21,7 +21,20 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="actives"><a href="/read">Read</a></li>
+
+          @if(\Auth::User()->type=='Parent' || \Auth::User()->type=='Teacher')
+           <li class="actives"><a href="/">Portal</a></li>
+
+          @endif
+
+          @if(\Auth::User()->type=='Student')
+           <li class="actives"><a href="/read">Read</a></li>
+
+          @endif
+
+
+
+           
             <li><a href="/accounts">My Account</a></li>
 
              <li> <a href="{{ route('logout') }}"  onclick="event.preventDefault();
