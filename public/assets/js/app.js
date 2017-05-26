@@ -4,7 +4,7 @@ $.ajaxSetup({
     }
 });
 
-           
+
 
 
          function deluser(id){
@@ -59,9 +59,9 @@ $.ajaxSetup({
 
 
          function page(did,pid){
-          
+
          // $('#edit_id').val(id);
-         
+
 
             $.ajax({
                type:'GET',
@@ -69,10 +69,10 @@ $.ajaxSetup({
                success:function(data){
                    console.log(data);
                    stopRecording();
-                 console.log(data.doc_page_content);
+                  $('#page').html('');
                   $('#page').html(data.doc_page_content);
                   $('#doc_id').val(data.doc_id);
-                  $('#page_no').html(data.doc_page_no);
+                  $('#page_no').html('<span class="badge">'+data.doc_page_no+'</span>');
                   $('#doc_page_no').val(data.doc_page_no);
 
                   stopRecording();
@@ -111,7 +111,7 @@ function getNext() {
     console.log(next);
 
 
-   
+
     $.ajax({
                type:'GET',
                url:'/read/document-'+did+'/pages/'+next,
@@ -139,7 +139,7 @@ function getNext() {
                   $('#doc_page_no').val(next);
 
                   stopRecording();
-                 
+
 
                 }
 
@@ -199,7 +199,7 @@ function getPrev() {
                 }
 
 
-                 
+
 
 
 
@@ -208,7 +208,7 @@ function getPrev() {
 }
 
 function status(did,pid,user){
-          
+
              $.ajax({
                type:'GET',
                url:'/read-status/'+user+'/'+did+'/'+pid,
@@ -217,7 +217,7 @@ function status(did,pid,user){
                   //document.getElementById('edit_name').value="adsfsf";
 
                   return data.status;
-              
+
 
 
                }

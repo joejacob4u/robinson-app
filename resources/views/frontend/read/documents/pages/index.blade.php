@@ -19,7 +19,9 @@
       <div class="span2" style="margin-left: 450px;">
       <ul class="nav nav-pills">
 
-      <a href="#" onclick="startRecording()" id="start"  class="btn btn-success" role="button">Read <span class="fa fa-microphone"></span></a>
+      <a href="#" onclick="startRecording()" id="start"  class="btn btn-primary" role="button">Read <span class="fa fa-microphone"></span></a>
+      <a href="#" onclick="redoRecording()" id="redo"  class="btn btn-info" role="button">Redo <span class="fa fa fa-undo"></span></a>
+
 
       <a style="display:none" href="#" id="pause" onclick="pauseRecording()"  class="btn btn-info" role="button">Pause <span class="fa fa-pause"></span></a>
 
@@ -31,7 +33,7 @@
       <a href="#" onclick="getNext()" id="stop" class="btn btn-warning" role="button">Next <span class="fa fa-step-forward"></span></a> --}}
 
 
-      <a href="#" onclick="finishReading()" id="fnish" class="btn btn-primary" role="button">Finsh Reading <span class="fa fa-cloud"></span></a>
+      <a href="#" onclick="finishReading()" id="fnish" class="btn btn-success" role="button" style="float:right">Finish Reading <span class="fa fa-check"></span></a>
 
       <input type="hidden" value='1' id='doc_id'>
       <input type="hidden" value='1' id='doc_page_no'>
@@ -40,7 +42,7 @@
 
 
 
-      </ul> 
+      </ul>
      </div>
 
        </div>
@@ -70,7 +72,7 @@
           <li class="lipages" id="page_{{$data->id}}">
               <a href="#" onclick="page({{$data->doc_id}},{{$data->id}})" class="clearfix">
               <div class="friend-name">
-                <strong>Page Number : {{$data->doc_page_no}}</strong>
+                <strong>Page Number : {{$data->doc_page_no }}</strong>
               </div>
               <div class="last-message text-muted">Tags : {{$data->tags}}</div>
 
@@ -95,39 +97,39 @@
         <div class="butt">
 
         <div class="col-md-4">
-        <button type="button" onclick="getPrev()" style="float: left;border-radius: 50px;"  class="btn btn-warning"><span class="fa fa-step-backward"> Previous</button>
+        <button type="button" onclick="getPrev()" style="float: left;"  class="btn btn-warning"><span class="fa fa-step-backward"> Previous</button>
 
         </div>
 
  <div class="col-md-4">
          <!-- <button type="button" style="margin-left: auto;margin-right: auto;" class="btn btn-primary">Previous</button> -->
-                        Page Number : <div class="btn-group" >
-                              <div id="page_no"></div>
-                             
+                        <strong>Page Number : </strong><div class="btn-group" >
+                              <div id="page_no">N/A</div>
+
                           </div>
          </div>
         <div class="col-md-4">
-        <button type="button" onclick="getNext()" class="btn btn-warning" style="float: right;border-radius: 50px;"> Next <span class="fa fa-step-forward"></button>
+        <button type="button" onclick="getNext()" class="btn btn-warning" style="float: right;"> Next <span class="fa fa-step-forward"></button>
         </div>
-          
+
         </div>
 
 
 
           <div class="chat-message" style="max-height: 600px;overflow-y:auto ">
-            
-              <div class="other-page">
-                
 
-                <p id="page"></p>
-            
+              <div class="other-page">
+
+
+                <p id="page" style="font-size:16px;">Select a page to start reading on the sidebar</p>
+
 
               </div>
 
 
           </div>
-          
-        </div> 
+
+        </div>
 
 
       </div>
@@ -238,7 +240,7 @@ function startRecording()
 
 function stopRecording()
 {
-  
+
   $(".progress").hide();
 
   $("#pause").hide();
@@ -316,7 +318,7 @@ function resumeRecording()
   setTimeout(
       function()
       {
-        
+
         mediaRecorder.resume();
         $('#stop').prop('disabled',false);
       }, 3000);
@@ -384,15 +386,6 @@ function processAudio()
       }
     });
 }
-</script>
-
-
-
-
-<script>
-
-
-
 </script>
 
 
