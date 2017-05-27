@@ -23,7 +23,7 @@
           <ul class="nav navbar-nav navbar-right">
 
           @if(\Auth::User()->type=='Parent' || \Auth::User()->type=='Teacher')
-           <li class="actives"><a href="/">Portal</a></li>
+           <li class="actives"><a href="/teacher">Portal</a></li>
 
           @endif
 
@@ -33,9 +33,9 @@
           @endif
 
 
-
-           
-            <li><a href="/accounts">My Account</a></li>
+          @if(\Auth::User()->type=='Parent' || \Auth::User()->type=='Teacher')
+          <li><a href="/accounts">My Account</a></li>
+          @endif
 
              <li> <a href="{{ route('logout') }}"  onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

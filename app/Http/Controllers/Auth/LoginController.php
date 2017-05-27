@@ -50,6 +50,12 @@ class LoginController extends Controller
             return redirect('/parent');
         }
 
+
+        if(\Auth::user()->type=='Student'){
+
+            return redirect('/get-user-state');
+        }
+
     }
 
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Document;
+use App\UserDocumentRead;
+use App\DocumentPages;
 
 class ReadController extends Controller
 {
@@ -85,5 +87,41 @@ class ReadController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function userState()
+    {
+
+    $docVal=UserDocumentRead::where('user_id',\Auth::User()->id)->where('status','attempted')->orderBy('updated_at','desc')->first();
+        if($docVal)
+        {
+          
+        $next=DocumentPages::where('doc_id',$docVal->document_id)->where('doc_page_no',$docVal->page_no+1)->first();
+
+        $pages=DocumentPages::where('doc_id',$docVal->document_id)->get();
+        $docName=Document::where('id',$docVal->document_id)->select('doc_name')->first()->doc_name;
+
+
+        if($next){
+
+
+
+        return view('frontend.read.documents.pages.index',compact('pages','docName','next'));
+        
+        }
+
+
+        }
+
+
+        
+        else{
+
+        return redirect('/read');
+        }
+
+
+
     }
 }

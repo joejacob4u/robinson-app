@@ -7,6 +7,7 @@ use App\DocumentPages;
 use App\Document;
 use App\UserDocumentRead;
 use Auth;
+use App\UserState;
 
 class ReadPagesController extends Controller
 {
@@ -110,6 +111,27 @@ class ReadPagesController extends Controller
       $document_read = UserDocumentRead::where('user_id',Auth::user()->id)
                                         ->where('document_id',$request->document_id)
                                         ->where('page_no',$request->page_no)->first();
+
+       // $user_state= UserState::where('user_id',Auth::user()->id)-get()
+
+      //   if($request->status=='attempted'){
+
+
+      //   if($user_state == null)
+      // {
+      //   if(UserState::create(['user_id' => Auth::user()->id,'file_id'=>$request->document_id])
+      //   {
+
+      //   }
+      // }
+      // else {
+      //   UserState::update(['page_no' => $request->page_no]);
+      // }
+
+
+      //   }
+
+
 
       if($document_read == null)
       {

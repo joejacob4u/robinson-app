@@ -52,3 +52,5 @@ Route::get('/teacher','TeacherController@index');
 Route::get('/parent','TeacherController@index');
 
 Route::post('/get_result', 'ResultsController@getResults');
+
+Route::get('/get-user-state', 'ReadController@userState');

@@ -116,7 +116,7 @@
                 success:function(data)
                 {
                   $('#resultModal #transcription').val(data.transcription);
-                  $('#resultModal #accuracy').val(data.accuracy);
+                  $('#resultModal #accuracy').val(data.accuracy+'%');
                   $('#resultModal').modal('show');
                 },
                 complete:function()
