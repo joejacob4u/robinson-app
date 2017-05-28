@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\UserDocumentRead;
+use App\DocumentPages;
 
 class LoginController extends Controller
 {
@@ -53,9 +55,28 @@ class LoginController extends Controller
 
         if(\Auth::user()->type=='Student'){
 
-            return redirect('/get-user-state');
+
+
+        $docVal=UserDocumentRead::where('user_id',\Auth::User()->id)->where('status','attempted')->orderBy('updated_at','desc')->first();
+
+
+        if($docVal)
+        {
+          
+       $next=DocumentPages::where('doc_id',$docVal->document_id)->where('doc_page_no',$docVal->page_no+1)->first();
+
+
+       return redirect('/read/document-'.$docVal->document_id.'/pages');
+
+        
+        }
+        else{
+
+
+            return redirect('/read');
         }
 
+    }
     }
 
 

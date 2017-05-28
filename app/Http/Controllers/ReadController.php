@@ -93,7 +93,7 @@ class ReadController extends Controller
     public function userState()
     {
 
-    $docVal=UserDocumentRead::where('user_id',\Auth::User()->id)->where('status','attempted')->orderBy('updated_at','desc')->first();
+        $docVal=UserDocumentRead::where('user_id',\Auth::User()->id)->where('status','attempted')->orderBy('updated_at','desc')->first();
         if($docVal)
         {
           
