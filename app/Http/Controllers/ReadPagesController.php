@@ -21,8 +21,9 @@ class ReadPagesController extends Controller
 
         $pages=DocumentPages::where('doc_id',$id)->get();
         $docName=Document::where('id',$id)->select('doc_name')->first()->doc_name;
+        $docId = $id;
 
-        return view('frontend.read.documents.pages.index',compact('pages','docName'));
+        return view('frontend.read.documents.pages.index',compact('pages','docName','docId'));
     }
 
     /**

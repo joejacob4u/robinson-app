@@ -77,7 +77,6 @@
               <div class="friend-name">
                 <strong>Page Number : {{$data->doc_page_no }}</strong>
               </div>
-              @if(in_array($data->page->status,['attempted','read']))) <i class="fa fa-check" aria-hidden="true" style="float:right;"></i> @endif
               <div class="last-message text-muted">Tags : {{$data->tags}}</div>
 
 
@@ -168,7 +167,7 @@
 <script src="https://cdn.webrtc-experiment.com/MediaStreamRecorder.js"> </script>
 <script>
 
-
+reviveUserState({{$docId}});
 
 
 
@@ -399,35 +398,35 @@ function processAudio()
     });
 }
 
-// function reviveUserState(doc_id)
-// {
-//   $.ajax({
-//     type: 'POST',
-//     url: '{{ url('read/document/revive-user-state') }}',
-//     data: { '_token' : '{{ csrf_token() }}', 'doc_id': doc_id },
-//     beforeSend:function()
-//     {
-//
-//     },
-//     success:function(data)
-//     {
-//       $.each(data, function(index, value) {
-//         if(value.status == 'attempted')
-//         {
-//           $('page_'+value.)
-//         }
-//       });
-//     },
-//     complete:function()
-//     {
-//        $('.overlay').remove();
-//     },
-//     error:function()
-//     {
-//       // failed request; give feedback to user
-//     }
-//   });
-// }
+function reviveUserState(doc_id)
+{
+  $.ajax({
+    type: 'POST',
+    url: '{{ url('read/document/revive-user-state') }}',
+    data: { '_token' : '{{ csrf_token() }}', 'doc_id': doc_id },
+    beforeSend:function()
+    {
+
+    },
+    success:function(data)
+    {
+      $.each(data, function(index, value) {
+        if(value.status == 'attempted' || value.status == 'read')
+        {
+          $('#page_'+value.doc_page_id).append('<i class="fa fa-check" aria-hidden="true" style="float:right"></i>')
+        }
+      });
+    },
+    complete:function()
+    {
+       $('.overlay').remove();
+    },
+    error:function()
+    {
+      // failed request; give feedback to user
+    }
+  });
+}
 </script>
 
 

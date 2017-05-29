@@ -22,4 +22,5 @@ class DocumentPages extends Model
         return $this->belongsTo('App\Document', 'doc_id','id');
     }
 
+
 }
