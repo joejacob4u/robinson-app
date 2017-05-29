@@ -10,7 +10,7 @@ class DocumentPages extends Model
     //public $incrementing=false;
     // public $timestamps = false;
     protected $fillable=[
-    					  'doc_page_no', 
+    					  'doc_page_no',
                           'doc_page_content',
                           'doc_id',
                           'tags'

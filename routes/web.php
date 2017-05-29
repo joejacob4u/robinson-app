@@ -43,6 +43,8 @@ Route::get('/read', function () {
 Route::resource('read/documents', 'ReadController');
 Route::resource('read/document-{id}/pages', 'ReadPagesController');
 Route::post('read/document/save-state','ReadPagesController@saveUserState');
+Route::post('read/document/revive-user-state','ReadPagesController@reviveUserState');
+
 
 Route::post('/record','WRTCController@save');
 

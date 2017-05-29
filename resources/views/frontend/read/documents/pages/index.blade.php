@@ -37,6 +37,7 @@
 
       <input type="hidden" value='1' id='doc_id'>
       <input type="hidden" value='1' id='doc_page_no'>
+      <input type="hidden" value='1' id='doc_page_id'>
       <input type="hidden" value='document' id='type'>
       <input type="hidden" value='{{\Auth::user()->id}}' id='user'>
 
@@ -76,6 +77,7 @@
               <div class="friend-name">
                 <strong>Page Number : {{$data->doc_page_no }}</strong>
               </div>
+              @if(in_array($data->page->status,['attempted','read']))) <i class="fa fa-check" aria-hidden="true" style="float:right;"></i> @endif
               <div class="last-message text-muted">Tags : {{$data->tags}}</div>
 
 
@@ -282,6 +284,7 @@ function finishReading()
   $("#pause").hide();
   $("#resume").hide();
   $("#start").show();
+  swal("Good job!", "You finished reading the page!", "success")
 
   setTimeout(
       function()
@@ -344,12 +347,13 @@ function saveUserState(state)
 {
   var docId = document.getElementById("doc_id").value;
   var pageNo = document.getElementById("doc_page_no").value;
+  var pageId = document.getElementById("doc_page_id").value;
   var uId = {{\Auth::user()->id}}
 
   $.ajax({
     type: 'POST',
     url: '{{ asset('read/document/save-state') }}',
-    data: { '_token' : '{{ csrf_token() }}', 'document_id': docId, 'user_id': uId, 'page_no': pageNo,'status': state},
+    data: { '_token' : '{{ csrf_token() }}', 'document_id': docId, 'user_id': uId, 'page_no': pageNo,'status': state, 'doc_page_id': pageId},
     beforeSend:function()
     {
       $('.box').append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
@@ -394,6 +398,36 @@ function processAudio()
       }
     });
 }
+
+// function reviveUserState(doc_id)
+// {
+//   $.ajax({
+//     type: 'POST',
+//     url: '{{ url('read/document/revive-user-state') }}',
+//     data: { '_token' : '{{ csrf_token() }}', 'doc_id': doc_id },
+//     beforeSend:function()
+//     {
+//
+//     },
+//     success:function(data)
+//     {
+//       $.each(data, function(index, value) {
+//         if(value.status == 'attempted')
+//         {
+//           $('page_'+value.)
+//         }
+//       });
+//     },
+//     complete:function()
+//     {
+//        $('.overlay').remove();
+//     },
+//     error:function()
+//     {
+//       // failed request; give feedback to user
+//     }
+//   });
+// }
 </script>
 
 

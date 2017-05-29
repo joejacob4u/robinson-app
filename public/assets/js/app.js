@@ -74,6 +74,7 @@ $.ajaxSetup({
                   $('#doc_id').val(data.doc_id);
                   $('#page_no').html('<span class="badge">'+data.doc_page_no+'</span>');
                   $('#doc_page_no').val(data.doc_page_no);
+                  $('#doc_page_id').val(data.id);
 
                   stopRecording();
                   saveUserState('seen');
@@ -223,8 +224,3 @@ function status(did,pid,user){
                }
             });
          }
-
-
-
-
-    

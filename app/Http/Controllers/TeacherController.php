@@ -16,7 +16,7 @@ class TeacherController extends Controller
     public function index()
     {
 
-        $data= UserDocumentRead::get();
+        $data= UserDocumentRead::where('processed',1)->get();
         return view('frontend.teacher.index',compact('data'));
     }
 

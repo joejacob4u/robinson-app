@@ -16,6 +16,8 @@
 <!-- DataTables -->
 <script src="{{ asset ("/bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js") }}"></script>
 <script src="{{ asset ("/bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js") }}"></script>
+<script src="{{ asset ("/bower_components/bootstrap-sweetalert/dist/sweetalert.js") }}"></script>
+
 <script>
 	$(".techpopupalert").fadeTo(2000, 500).slideUp(500, function(){
     $(".techpopupalert").slideUp(500);

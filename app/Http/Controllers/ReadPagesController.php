@@ -67,8 +67,8 @@ class ReadPagesController extends Controller
 
       return $data=array(
                     'status'  =>"none",
-                   
-                  );  
+
+                  );
 
     }
 
@@ -141,16 +141,27 @@ class ReadPagesController extends Controller
         }
       }
       else {
-        $document_read->update(['status' => $request->status]);
+        if($document_read->status != 'attempted')
+        {
+          $document_read->update(['status' => $request->status]);
+        }
       }
     }
 
 
-        public function readStatus($user,$did,$id)
+    public function readStatus($user,$did,$id)
     {
-       
-
        return $page=UserDocumentRead::where('page_no',$id)->where('document_id',$did)->where('user_id',$user)->select('status')->first()->status;
+    }
+
+    public function reviveUserState(Request $request)
+    {
+      $document_read = UserDocumentRead::where('user_id',Auth::user()->id)
+                                        ->where('document_id',$request->doc_id)
+                                        ->get();
+
+      return $document_read;
+
     }
 
 }

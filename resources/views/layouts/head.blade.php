@@ -24,5 +24,7 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="{{ asset ("/bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css") }}">
 
+  <link rel="stylesheet" href="{{ asset ("/bower_components/bootstrap-sweetalert/dist/sweetalert.css") }}">
+
   @yield('head')
 </head>
