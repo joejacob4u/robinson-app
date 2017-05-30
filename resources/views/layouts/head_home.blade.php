@@ -14,6 +14,7 @@
     <link href="{{ asset ("/assets/css/animate.min.css")}}" rel="stylesheet">
     <link href="{{ asset ("/assets/css/timeline.css")}}" rel="stylesheet">
     <link href="{{ asset ("/assets/css/login_register.css")}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset ("/bower_components/bootstrap-sweetalert/dist/sweetalert.css") }}">
     <link href="{{ asset ("/assets/css/forms.css") }}" rel="stylesheet">
     <link href="{{ asset ("/assets/css/buttons.css")}}" rel="stylesheet">
     <link href="{{ asset ("/assets/css/photos1.css")}}" rel="stylesheet">

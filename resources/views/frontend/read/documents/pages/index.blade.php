@@ -283,7 +283,7 @@ function finishReading()
   $("#pause").hide();
   $("#resume").hide();
   $("#start").show();
-  swal("Good job!", "You finished reading the page!", "success")
+  swal("Good job!", "You finished reading the page!", "success");
 
   setTimeout(
       function()
@@ -410,10 +410,15 @@ function reviveUserState(doc_id)
     },
     success:function(data)
     {
+      var document;
+      var page;
+
       $.each(data, function(index, value) {
         if(value.status == 'attempted' || value.status == 'read')
         {
-          $('#page_'+value.doc_page_id).append('<i class="fa fa-check" aria-hidden="true" style="float:right"></i>')
+          $('#page_'+value.doc_page_id+' .friend-name').append('<i class="fa fa-check" aria-hidden="true" style="float:right"></i>');
+          document = value.document_id;
+          page = value.doc_page_id;
         }
       });
     },

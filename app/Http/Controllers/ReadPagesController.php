@@ -159,6 +159,7 @@ class ReadPagesController extends Controller
     {
       $document_read = UserDocumentRead::where('user_id',Auth::user()->id)
                                         ->where('document_id',$request->doc_id)
+                                        ->orderBy('updated_at','asc')
                                         ->get();
 
       return $document_read;
